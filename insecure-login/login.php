@@ -1,9 +1,8 @@
 <?php
-
-ini_set( 'session.cookie_secure', 1 );
+ini_set('session.cookie_httponly', 1 );
 
 session_start();
-echo session_id();
+
 const login = 'admin';
 const password = 'admin';
 
@@ -12,13 +11,17 @@ if (isset($_POST['login']) && isset($_POST['password']))
   if ($_POST['login'] === login && $_POST['password'] === password)
   {
     $_SESSION['login'] = $_POST['login'];
-    header('Location: /');
+    header('Location: index.php');
+    exit;
   }
   else
   {
     echo "<script>alert('Wrong login or password');</script>";
     echo "<noscript>Wrong login or password</noscript>";
   }
+}else{
+    //ini_set('session.cookie_secure', 1 );
+    
 }
 
 ?>
@@ -174,6 +177,7 @@ if (isset($_POST['login']) && isset($_POST['password']))
           <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
           <p id="profile-name" class="profile-name-card"></p>
           <form class="form-signin" method="post">
+              <?php if(isset($_SESSION['login'])) echo $_SESSION['login'] ?>
               <div class="mb-2">PHPSESSION <?php echo session_id(); ?> </div>
               <div class="mb-2">User: admin </div>
               <div class="mb-2">Pass: admin </div>
