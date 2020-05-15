@@ -1,6 +1,6 @@
 <?php
 
-ini_set('session.cookie_httponly', 1 );
+ini_set('session.cookie_httponly', 1);
 
 session_start();
 
@@ -16,12 +16,15 @@ session_start();
 <div class="container h-100">
   <div class="row h-100 justify-content-center align-items-center">
     <div class="col text-center">
+<img src="./imgs/icon.png" width="100" class="img-responsive mb-5"/>
+
 <?php
 
 if (!isset($_SESSION['login'])) {
   
 ?>
 
+<h2 class="mb-4"> No estas logueado :( </h2>
 <a href="logs.php" class="btn btn-primary">Logs</a>
 <a href="login.php" class="btn btn-primary">Login</a>
   
@@ -30,7 +33,7 @@ if (!isset($_SESSION['login'])) {
 } else {
 
 ?>
-<h2> Hi,  <?php echo $_SESSION['login']; ?> </h2>
+<h2 class="mb-4"> Hola,  <?php echo $_SESSION['login']; ?> </h2>
 <a href="logs.php" class="btn btn-primary">Logs</a>
 <a href="logout.php" class="btn btn-primary">Logout</a>
 
